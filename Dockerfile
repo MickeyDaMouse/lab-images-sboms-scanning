@@ -1,4 +1,8 @@
-FROM node:20.9.0-bookworm-slim@sha256:7059cd1a44e9694e6df05408fed5d56b710b2f45a8e8806b178d8c31653a48cc
+FROM node:24-bookworm-slim
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends --only-upgrade libpcre2-8-0 \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
